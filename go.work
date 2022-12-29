@@ -1,0 +1,6 @@
+go 1.18
+
+use (
+	./week1/percolation
+	./week1/union_find
+)
