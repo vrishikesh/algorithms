@@ -1,4 +1,4 @@
-package main
+package union_find
 
 type UFer interface {
 	Union(int, int)

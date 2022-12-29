@@ -1,4 +1,4 @@
-package quick_find
+package union_find
 
 import "fmt"
 
@@ -6,7 +6,7 @@ type QF struct {
 	ID []int
 }
 
-func New(count int) *QF {
+func NewQF(count int) *QF {
 	var uf = QF{
 		ID: make([]int, count),
 	}
@@ -40,5 +40,5 @@ func (t *QF) Count() int {
 }
 
 func (t *QF) Print() {
-	fmt.Printf("%#v\n", t.ID)
+	fmt.Printf("QF.ID: %#v\n", t.ID)
 }

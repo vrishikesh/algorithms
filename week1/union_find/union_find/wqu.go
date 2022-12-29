@@ -1,4 +1,4 @@
-package weighted_quick_union
+package union_find
 
 import "fmt"
 
@@ -7,7 +7,7 @@ type WQU struct {
 	SZ []int
 }
 
-func New(count int) *WQU {
+func NewWQU(count int) *WQU {
 	var wqu = WQU{
 		ID: make([]int, count),
 		SZ: make([]int, count),
@@ -58,6 +58,6 @@ func (t *WQU) root(i int) int {
 }
 
 func (t *WQU) Print() {
-	fmt.Printf("%#v\n", t.ID)
-	fmt.Printf("%#v\n", t.SZ)
+	fmt.Printf("WQU.ID: %#v\n", t.ID)
+	fmt.Printf("WQU.SZ: %#v\n", t.SZ)
 }

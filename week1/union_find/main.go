@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	UF "union_find/weighted_quick_union"
+	UF "union_find/union_find"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 		{6, 7},
 	}
 
-	var uf UFer = UF.New(count)
+	var uf UF.UFer = UF.NewWQUPC(count)
 
 	for _, v := range list {
 		p, q := v[0], v[1]

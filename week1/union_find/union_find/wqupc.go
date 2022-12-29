@@ -1,27 +1,27 @@
-package weighted_quick_union_path_compression
+package union_find
 
 import "fmt"
 
-type WQU struct {
+type WQUPC struct {
 	ID []int
 	SZ []int
 }
 
-func New(count int) *WQU {
-	var wqu = WQU{
+func NewWQUPC(count int) *WQUPC {
+	var wqupc = WQUPC{
 		ID: make([]int, count),
 		SZ: make([]int, count),
 	}
 
 	for i := 0; i < count; i++ {
-		wqu.ID[i] = i
-		wqu.SZ[i] = 1
+		wqupc.ID[i] = i
+		wqupc.SZ[i] = 1
 	}
 
-	return &wqu
+	return &wqupc
 }
 
-func (t *WQU) Union(p int, q int) {
+func (t *WQUPC) Union(p int, q int) {
 	i := t.root(p)
 	j := t.root(q)
 	if i == j {
@@ -37,19 +37,19 @@ func (t *WQU) Union(p int, q int) {
 	}
 }
 
-func (t *WQU) Connected(p int, q int) bool {
+func (t *WQUPC) Connected(p int, q int) bool {
 	return t.root(p) == t.root(q)
 }
 
-func (t *WQU) Find(int) int {
+func (t *WQUPC) Find(int) int {
 	return 0
 }
 
-func (t *WQU) Count() int {
+func (t *WQUPC) Count() int {
 	return len(t.ID)
 }
 
-func (t *WQU) root(i int) int {
+func (t *WQUPC) root(i int) int {
 	for i != t.ID[i] {
 		t.ID[i] = t.ID[t.ID[i]]
 		i = t.ID[i]
@@ -58,7 +58,7 @@ func (t *WQU) root(i int) int {
 	return i
 }
 
-func (t *WQU) Print() {
-	fmt.Printf("%#v\n", t.ID)
-	fmt.Printf("%#v\n", t.SZ)
+func (t *WQUPC) Print() {
+	fmt.Printf("WQUPC.ID: %#v\n", t.ID)
+	fmt.Printf("WQUPC.SZ: %#v\n", t.SZ)
 }
