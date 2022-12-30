@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"stacks_queues/generic_stack"
+	"stacks_queues/deque"
 )
 
 func main() {
@@ -23,11 +22,29 @@ func main() {
 	// q.Enqueue("you?")
 	// fmt.Println(q)
 
-	var s generic_stack.IStack[string] = generic_stack.NewFixedCapacityStack[string](10)
-	s.Push("How")
-	s.Push("are")
-	s.Push("the")
-	s.Pop()
-	s.Push("you?")
-	fmt.Println(s)
+	// var s generic_stack.IStack[string] = generic_stack.NewFixedCapacityStack[string](10)
+	// s.Push("How")
+	// s.Push("are")
+	// s.Push("the")
+	// s.Pop()
+	// s.Push("you?")
+	// fmt.Println(s)
+
+	var d deque.IDeque[string] = deque.NewLinkedDeque[string]()
+
+	d.AddFirst("first")
+	d.AddLast("second")
+	d.AddLast("third")
+	d.AddLast("last")
+	d.AddFirst("zero")
+
+	d.RemoveLast()
+	d.RemoveFirst()
+	d.RemoveFirst()
+	d.RemoveLast()
+
+	iter := d.Iterator()
+	for iter.HasNext() {
+		fmt.Println(iter.GetNext())
+	}
 }
