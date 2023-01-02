@@ -1,6 +1,7 @@
 go 1.18
 
 use (
+	./kv_db
 	./reverse_linked_list
 	./week1/percolation
 	./week1/union_find
