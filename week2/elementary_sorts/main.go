@@ -5,21 +5,27 @@ import (
 	"sync"
 	"time"
 
+	"elementary_sorts/bubble_sort"
+	"elementary_sorts/heap_sort"
+	"elementary_sorts/insertion_sort"
+	"elementary_sorts/selection_sort"
 	"elementary_sorts/shell_sort"
 	"elementary_sorts/shuffling"
 	"elementary_sorts/types"
 )
 
 func main() {
-	var slice = shuffling.Generate(100000000)
+	var slice = shuffling.Generate(100000)
 	var wg sync.WaitGroup
 
 	fmt.Printf("Random Numbers: %v\n\n", len(slice))
 
 	sorts := []types.Sorter[int]{
-		// selection_sort.New(),
-		// insertion_sort.New(),
+		selection_sort.New(),
+		insertion_sort.New(),
 		shell_sort.New(),
+		bubble_sort.New(),
+		heap_sort.New(slice...),
 	}
 
 	wg.Add(len(sorts))
