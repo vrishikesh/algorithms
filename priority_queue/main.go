@@ -1,17 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"elementary_sorts/shuffling"
+)
 
 func main() {
 	q := NewPriorityQueue[string]()
 
-	q.Enqueue(3, "")
-	q.Enqueue(2, "")
-	q.Enqueue(4, "")
-	q.Enqueue(7, "")
+	randomNumbers := shuffling.Generate(10)
+	fmt.Println(randomNumbers)
+
+	for _, n := range randomNumbers {
+		q.Enqueue(n)
+	}
 
 	q.Dequeue()
-	q.Enqueue(0, "")
+	q.Dequeue()
 
 	iter := q.Iterator()
 	for iter.HasNext() {

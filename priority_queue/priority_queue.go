@@ -12,7 +12,8 @@ func (q *PriorityQueue[T]) IsEmpty() bool {
 	return len(q.heap) == 0
 }
 
-func (q *PriorityQueue[T]) Enqueue(score int, data T) {
+func (q *PriorityQueue[T]) Enqueue(score int) {
+	var data T
 	e := &Elem[T]{
 		Score: score,
 		Data:  data,

@@ -1,9 +1,13 @@
 package shuffling
 
-import "math/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 func Shuffle(slice []int) {
 	N := len(slice)
+	rand.Seed(time.Now().UnixNano())
 
 	for i := 0; i < N; i++ {
 		r := rand.Intn(N-i) + i
