@@ -4,23 +4,26 @@ import (
 	"fmt"
 
 	"elementary_sorts/shuffling"
+	"priority_queue/priority_queue"
 )
 
 func main() {
-	q := NewPriorityQueue[string]()
+	capacity := 10
+	slice := shuffling.Generate(capacity)
+	fmt.Printf("slice: %v\n\n", slice)
 
-	randomNumbers := shuffling.Generate(10)
-	fmt.Println(randomNumbers)
+	q := priority_queue.NewPriorityQueue(slice...)
 
-	for _, n := range randomNumbers {
-		q.Enqueue(n)
+	for i := 0; i < capacity; i++ {
+		DequeueAndPrint(q)
 	}
+}
 
-	q.Dequeue()
-	q.Dequeue()
-
+func DequeueAndPrint(q *priority_queue.PriorityQueue) {
+	fmt.Println("Dequeue:", q.Dequeue())
 	iter := q.Iterator()
 	for iter.HasNext() {
 		fmt.Println(iter.GetNext())
 	}
+	fmt.Println()
 }

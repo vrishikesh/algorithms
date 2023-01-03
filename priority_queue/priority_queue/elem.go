@@ -1,14 +1,14 @@
-package main
+package priority_queue
 
 import (
 	"fmt"
 )
 
-type Elem[T comparable] struct {
+type Elem struct {
 	Score int
-	Data  T
+	Data  interface{}
 }
 
-func (e *Elem[T]) String() string {
+func (e *Elem) String() string {
 	return fmt.Sprintf("Score: %d, Data: %v", e.Score, e.Data)
 }
