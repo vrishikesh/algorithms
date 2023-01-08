@@ -1,6 +1,7 @@
 go 1.18
 
 use (
+	./convex_hull
 	./kv_db
 	./priority_queue
 	./reverse_linked_list
