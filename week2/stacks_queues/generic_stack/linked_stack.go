@@ -27,14 +27,18 @@ func (s *LinkedStack[T]) Pop() T {
 	return val
 }
 
+func (s *LinkedStack[T]) Peek() T {
+	return s.first.Val
+}
+
 func (s *LinkedStack[T]) String() string {
-	curr := s.first
+	current := s.first
 	var sb string
 
-	for curr != nil {
-		val := fmt.Sprint(curr.Val)
+	for current != nil {
+		val := fmt.Sprint(current.Val)
 		sb = val + " " + sb
-		curr = curr.Next
+		current = current.Next
 	}
 
 	return sb
