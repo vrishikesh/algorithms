@@ -13,36 +13,35 @@ func (s *MergeSort[T]) Sort(items []T) {
 	s.dive(items, aux, 0, high)
 }
 
-func (s *MergeSort[T]) dive(slice, aux []T, low, high int) (int, int) {
-	mid := (high + low) / 2
-
-	if low < high {
-		lo1, hi1 := s.dive(slice, aux, low, mid)
-		lo2, hi2 := s.dive(slice, aux, mid+1, high)
-		if slice[hi1] < slice[lo2] {
-			return low, high
-		}
-
-		s.merge(
-			slice,
-			aux,
-			lo1,
-			hi1,
-			lo2,
-			hi2,
-		)
+func (s *MergeSort[T]) dive(slice, aux []T, low, high int) {
+	if low >= high {
+		return
 	}
 
-	return low, high
+	mid := (high + low) / 2
+
+	s.dive(slice, aux, low, mid)
+	s.dive(slice, aux, mid+1, high)
+	if slice[mid] < slice[mid+1] {
+		return
+	}
+
+	s.merge(
+		slice,
+		aux,
+		low,
+		mid,
+		high,
+	)
 }
 
-func (s *MergeSort[T]) merge(slice, aux []T, lo1, hi1, lo2, hi2 int) {
-	for i := lo1; i <= hi2; i++ {
+func (s *MergeSort[T]) merge(slice, aux []T, low, mid, high int) {
+	for i := low; i <= high; i++ {
 		aux[i] = slice[i]
 	}
 
-	i, j, k := lo1, lo2, lo1
-	for i <= hi1 && j <= hi2 {
+	i, j, k := low, mid+1, low
+	for i <= mid && j <= high {
 		if aux[i] <= aux[j] {
 			slice[k] = aux[i]
 			i += 1
@@ -54,15 +53,9 @@ func (s *MergeSort[T]) merge(slice, aux []T, lo1, hi1, lo2, hi2 int) {
 		k += 1
 	}
 
-	for i <= hi1 {
+	for i <= mid {
 		slice[k] = aux[i]
 		i += 1
-		k += 1
-	}
-
-	for j <= hi2 {
-		slice[k] = aux[j]
-		j += 1
 		k += 1
 	}
 }
