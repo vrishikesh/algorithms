@@ -27,7 +27,7 @@ func main() {
 		selection_sort.New(),
 		heap_sort.New(slice...),
 		shell_sort.New(),
-		merge_sort.New(),
+		merge_sort.NewRecursive(),
 	}
 
 	wg.Add(len(sorts))

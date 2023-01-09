@@ -1,19 +1,19 @@
 package merge_sort
 
-type MergeSort[T int] struct{}
+type MergeSortRecursive[T int] struct{}
 
-func New[T int]() *MergeSort[T] {
-	return &MergeSort[T]{}
+func NewRecursive[T int]() *MergeSortRecursive[T] {
+	return &MergeSortRecursive[T]{}
 }
 
-func (s *MergeSort[T]) Sort(items []T) {
+func (s *MergeSortRecursive[T]) Sort(items []T) {
 	aux := make([]T, len(items))
 
 	high := len(items) - 1
 	s.dive(items, aux, 0, high)
 }
 
-func (s *MergeSort[T]) dive(slice, aux []T, low, high int) {
+func (s *MergeSortRecursive[T]) dive(slice, aux []T, low, high int) {
 	if low >= high {
 		return
 	}
@@ -35,7 +35,7 @@ func (s *MergeSort[T]) dive(slice, aux []T, low, high int) {
 	)
 }
 
-func (s *MergeSort[T]) merge(slice, aux []T, low, mid, high int) {
+func (s *MergeSortRecursive[T]) merge(slice, aux []T, low, mid, high int) {
 	for i := low; i <= high; i++ {
 		aux[i] = slice[i]
 	}
@@ -60,6 +60,6 @@ func (s *MergeSort[T]) merge(slice, aux []T, low, mid, high int) {
 	}
 }
 
-func (s *MergeSort[T]) Name() string {
-	return "Merge"
+func (s *MergeSortRecursive[T]) Name() string {
+	return "Recursive Merge"
 }
