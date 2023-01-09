@@ -12,20 +12,22 @@ import (
 	"elementary_sorts/shell_sort"
 	"elementary_sorts/shuffling"
 	"elementary_sorts/types"
+	"merge_sort/merge_sort"
 )
 
 func main() {
-	var slice = shuffling.Generate(100000)
+	var slice = shuffling.Generate(10000)
 	var wg sync.WaitGroup
 
 	fmt.Printf("Random Numbers: %v\n\n", len(slice))
 
 	sorts := []types.Sorter[int]{
-		selection_sort.New(),
-		insertion_sort.New(),
-		shell_sort.New(),
 		bubble_sort.New(),
+		insertion_sort.New(),
+		selection_sort.New(),
 		heap_sort.New(slice...),
+		shell_sort.New(),
+		merge_sort.New(),
 	}
 
 	wg.Add(len(sorts))

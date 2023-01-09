@@ -9,4 +9,5 @@ use (
 	./week1/union_find
 	./week2/elementary_sorts
 	./week2/stacks_queues
+	./week3/merge_sort
 )
