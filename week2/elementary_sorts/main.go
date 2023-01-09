@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 	"sync"
 	"time"
 
@@ -16,9 +18,18 @@ import (
 )
 
 func main() {
-	var slice = shuffling.Generate(10000)
-	var wg sync.WaitGroup
+	var (
+		N     = 10000
+		wg    sync.WaitGroup
+		slice []int
+	)
 
+	if len(os.Args) > 1 {
+		N, _ = strconv.Atoi(os.Args[1])
+	}
+
+	fmt.Printf("Generating %d Random Numbers\n", N)
+	slice = shuffling.Generate(N)
 	fmt.Printf("Random Numbers: %v\n\n", len(slice))
 
 	sorts := []types.Sorter[int]{
@@ -28,6 +39,7 @@ func main() {
 		heap_sort.New(slice...),
 		shell_sort.New(),
 		merge_sort.NewRecursive(),
+		merge_sort.NewIterative(),
 	}
 
 	wg.Add(len(sorts))
