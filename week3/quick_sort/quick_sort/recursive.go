@@ -16,9 +16,9 @@ func (s *QuickSortRecursive[T]) dive(slice []T, low, high int) {
 		return
 	}
 
-	k := s.partition(slice, low, high)
-	s.dive(slice, low, k-1)
-	s.dive(slice, k+1, high)
+	j := s.partition(slice, low, high)
+	s.dive(slice, low, j-1)
+	s.dive(slice, j+1, high)
 }
 
 func (s *QuickSortRecursive[T]) partition(slice []T, low, high int) int {
