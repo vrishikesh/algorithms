@@ -12,4 +12,5 @@ use (
 	./week3/merge_sort
 	./week3/quick_select
 	./week3/quick_sort
+	./week3/three_way_quick_sort
 )

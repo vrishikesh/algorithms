@@ -16,6 +16,7 @@ import (
 	"elementary_sorts/types"
 	"merge_sort/merge_sort"
 	"quick_sort/quick_sort"
+	"three_way_quick_sort/three_way_quick_sort"
 )
 
 func main() {
@@ -42,6 +43,7 @@ func main() {
 		shell_sort.New(),
 		merge_sort.NewRecursive(),
 		merge_sort.NewIterative(),
+		three_way_quick_sort.NewRecursive(),
 	}
 
 	wg.Add(len(sorts))
