@@ -10,5 +10,6 @@ use (
 	./week2/elementary_sorts
 	./week2/stacks_queues
 	./week3/merge_sort
+	./week3/quick_select
 	./week3/quick_sort
 )
