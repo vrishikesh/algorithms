@@ -7,8 +7,7 @@ func NewRecursive[T int]() *ThreeWayQuickSort[T] {
 }
 
 func (s *ThreeWayQuickSort[T]) Sort(items []T) {
-	high := len(items) - 1
-	s.dive(items, 0, high)
+	s.dive(items, 0, len(items)-1)
 }
 
 func (s *ThreeWayQuickSort[T]) dive(slice []T, low, high int) {

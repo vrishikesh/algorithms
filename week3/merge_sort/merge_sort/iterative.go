@@ -11,9 +11,9 @@ func (s *MergeSortIterative[T]) Sort(items []T) {
 }
 
 func (s *MergeSortIterative[T]) iterate(slice []T) {
-	aux := make([]T, len(slice))
+	var N = len(slice)
+	var aux = make([]T, N)
 
-	N := len(slice)
 	for sz := 1; sz < N; sz *= 2 {
 		for low := 0; low+sz < N; low += sz + sz {
 			high := s.min((low + sz + sz - 1), N-1)
@@ -39,7 +39,7 @@ func (s *MergeSortIterative[T]) merge(slice, aux []T, low, mid, high int) {
 		aux[i] = slice[i]
 	}
 
-	i, j, k := low, mid+1, low
+	var i, j, k = low, mid + 1, low
 	for i <= mid && j <= high {
 		if aux[i] <= aux[j] {
 			slice[k] = aux[i]

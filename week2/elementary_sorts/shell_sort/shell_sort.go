@@ -7,7 +7,7 @@ func New[T int]() *ShellSort[T] {
 }
 
 func (s *ShellSort[T]) Sort(items []T) {
-	N := len(items)
+	var N = len(items)
 
 	h := 1
 	for h < N/3 {

@@ -38,12 +38,12 @@ func main() {
 		bubble_sort.New(),
 		insertion_sort.New(),
 		selection_sort.New(),
-		quick_sort.NewRecursive(),
 		heap_sort.New(slice...),
 		shell_sort.New(),
 		merge_sort.NewRecursive(),
 		merge_sort.NewIterative(),
 		three_way_quick_sort.NewRecursive(),
+		quick_sort.NewRecursive(),
 	}
 
 	wg.Add(len(sorts))

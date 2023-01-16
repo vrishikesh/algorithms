@@ -7,8 +7,7 @@ func NewRecursive[T int]() *QuickSortRecursive[T] {
 }
 
 func (s *QuickSortRecursive[T]) Sort(items []T) {
-	high := len(items) - 1
-	s.dive(items, 0, high)
+	s.dive(items, 0, len(items)-1)
 }
 
 func (s *QuickSortRecursive[T]) dive(slice []T, low, high int) {
@@ -22,15 +21,15 @@ func (s *QuickSortRecursive[T]) dive(slice []T, low, high int) {
 }
 
 func (s *QuickSortRecursive[T]) partition(slice []T, low, high int) int {
-	var i, j int = low, high
+	var i, j = low, high + 1
 	for {
-		for i = low + 1; i < high; i++ {
+		for i = i + 1; i < high; i++ {
 			if !s.less(slice, i, low) {
 				break
 			}
 		}
 
-		for j = high; j > low; j-- {
+		for j = j - 1; j > low; j-- {
 			if !s.less(slice, low, j) {
 				break
 			}

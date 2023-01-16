@@ -7,7 +7,7 @@ func NewQuickSelect[T int]() *QuickSelect[T] {
 }
 
 func (s *QuickSelect[T]) Select(slice []T, k int) T {
-	low, high := 0, len(slice)-1
+	var low, high = 0, len(slice) - 1
 
 	for low < high {
 		j := s.partition(slice, low, high)
@@ -24,16 +24,15 @@ func (s *QuickSelect[T]) Select(slice []T, k int) T {
 }
 
 func (s *QuickSelect[T]) partition(slice []T, low, high int) int {
-	i, j := low, high
-
+	var i, j = low, high + 1
 	for {
-		for i = low + 1; i < high; i++ {
+		for i = i + 1; i < high; i++ {
 			if !s.less(slice, i, low) {
 				break
 			}
 		}
 
-		for j = high; j > low; j-- {
+		for j = j - 1; j > low; j-- {
 			if !s.less(slice, low, j) {
 				break
 			}

@@ -6,7 +6,7 @@ import (
 )
 
 func Shuffle(slice []int) {
-	N := len(slice)
+	var N = len(slice)
 	rand.Seed(time.Now().UnixNano())
 
 	for i := 0; i < N; i++ {

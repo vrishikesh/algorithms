@@ -7,10 +7,10 @@ func NewRecursive[T int]() *MergeSortRecursive[T] {
 }
 
 func (s *MergeSortRecursive[T]) Sort(items []T) {
-	aux := make([]T, len(items))
+	var N = len(items)
+	var aux = make([]T, N)
 
-	high := len(items) - 1
-	s.dive(items, aux, 0, high)
+	s.dive(items, aux, 0, N-1)
 }
 
 func (s *MergeSortRecursive[T]) dive(slice, aux []T, low, high int) {
