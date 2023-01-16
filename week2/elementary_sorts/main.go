@@ -15,6 +15,7 @@ import (
 	"elementary_sorts/shuffling"
 	"elementary_sorts/types"
 	"merge_sort/merge_sort"
+	"quick_sort/quick_sort"
 )
 
 func main() {
@@ -36,6 +37,7 @@ func main() {
 		bubble_sort.New(),
 		insertion_sort.New(),
 		selection_sort.New(),
+		quick_sort.NewRecursive(),
 		heap_sort.New(slice...),
 		shell_sort.New(),
 		merge_sort.NewRecursive(),
