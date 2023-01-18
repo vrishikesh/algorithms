@@ -5,6 +5,7 @@ use (
 	./kv_db
 	./priority_queue
 	./reverse_linked_list
+	./visualize
 	./week1/percolation
 	./week1/union_find
 	./week2/elementary_sorts
