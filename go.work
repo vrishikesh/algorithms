@@ -1,17 +1,17 @@
 go 1.18
 
 use (
-	./convex_hull
-	./kv_db
-	./priority_queue
-	./reverse_linked_list
-	./week1/percolation
-	./week1/union_find
-	./week2/elementary_sorts
-	./week2/stacks_queues
-	./week3/merge_sort
-	./week3/quick_select
-	./week3/quick_sort
-	./week3/three_way_quick_sort
-	./week4/slider_puzzle
+	./part1/convex_hull
+	./part1/kv_db
+	./part1/priority_queue
+	./part1/reverse_linked_list
+	./part1/week1/percolation
+	./part1/week1/union_find
+	./part1/week2/elementary_sorts
+	./part1/week2/stacks_queues
+	./part1/week3/merge_sort
+	./part1/week3/quick_select
+	./part1/week3/quick_sort
+	./part1/week3/three_way_quick_sort
+	./part1/week4/slider_puzzle
 )
