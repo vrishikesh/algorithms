@@ -14,4 +14,5 @@ use (
 	./part1/week3/quick_sort
 	./part1/week3/three_way_quick_sort
 	./part1/week4/slider_puzzle
+	./part2/graph_processing
 )
