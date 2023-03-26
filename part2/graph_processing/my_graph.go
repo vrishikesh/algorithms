@@ -43,6 +43,9 @@ func (g *MyGraph) Edges(v int) ([]int, bool) {
 func (g *MyGraph) String() string {
 	var s strings.Builder
 
+	s.WriteString(fmt.Sprintf("Vertices: %v\n", g.noOfVertices))
+	s.WriteString(fmt.Sprintf("Edges: %v\n", g.noOfEdges))
+
 	for v := range g.vertices {
 		s.WriteString(fmt.Sprintf("%v: ", v))
 		edges, ok := g.Edges(v)
