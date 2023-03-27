@@ -33,4 +33,8 @@ func main() {
 	dfp := NewDepthFirstPaths(g3, 0)
 	fmt.Println(dfp)
 	fmt.Println(dfp.PathTo(4))
+
+	bfp := NewBreadthFirstPaths(g3, 0)
+	fmt.Println(bfp)
+	// fmt.Println(bfp.PathTo(4))
 }
