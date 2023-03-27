@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"graph_processing/graph_processing"
+)
 
 func main() {
 	// g1 := NewAdjGraph(5)
@@ -21,7 +25,7 @@ func main() {
 	// g2.AddEdge(3, 4)
 	// fmt.Println(g2)
 
-	g3 := NewMyGraph()
+	g3 := graph_processing.NewMyGraph()
 	g3.AddEdge(0, 1)
 	g3.AddEdge(0, 2)
 	g3.AddEdge(0, 3)
@@ -30,11 +34,11 @@ func main() {
 	g3.AddEdge(3, 4)
 	fmt.Println(g3)
 
-	dfp := NewDepthFirstPaths(g3, 0)
+	dfp := graph_processing.NewDepthFirstPaths(g3, 0)
 	fmt.Println(dfp)
 	fmt.Println(dfp.PathTo(4))
 
-	bfp := NewBreadthFirstPaths(g3, 0)
+	bfp := graph_processing.NewBreadthFirstPaths(g3, 0)
 	fmt.Println(bfp)
 	// fmt.Println(bfp.PathTo(4))
 }
