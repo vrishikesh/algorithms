@@ -40,6 +40,10 @@ func (g *MyGraph) Edges(v int) ([]int, bool) {
 	return edges, ok
 }
 
+func (g *MyGraph) V() int {
+	return g.noOfVertices
+}
+
 func (g *MyGraph) String() string {
 	var s strings.Builder
 

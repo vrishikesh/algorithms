@@ -29,4 +29,8 @@ func main() {
 	g3.AddEdge(2, 4)
 	g3.AddEdge(3, 4)
 	fmt.Println(g3)
+
+	dfp := NewDepthFirstPaths(g3, 0)
+	fmt.Println(dfp)
+	fmt.Println(dfp.PathTo(4))
 }
