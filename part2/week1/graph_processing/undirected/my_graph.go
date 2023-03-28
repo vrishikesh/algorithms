@@ -21,27 +21,30 @@ func NewMyGraph() *MyGraph {
 	}
 }
 
-func (g *MyGraph) AddEdge(v1, v2 int) {
-	g.edges[v1] = append(g.edges[v1], v2)
-	g.edges[v2] = append(g.edges[v2], v1)
-	if _, ok := g.vertices[v1]; !ok {
+func (g *MyGraph) AddEdge(v, w int) {
+	g.edges[v] = append(g.edges[v], w)
+	g.edges[w] = append(g.edges[w], v)
+	if _, ok := g.vertices[v]; !ok {
 		g.noOfVertices++
 	}
-	if _, ok := g.vertices[v2]; !ok {
+	if _, ok := g.vertices[w]; !ok {
 		g.noOfVertices++
 	}
-	g.vertices[v1] = struct{}{}
-	g.vertices[v2] = struct{}{}
+	g.vertices[v] = struct{}{}
+	g.vertices[w] = struct{}{}
 	g.noOfEdges++
 }
 
-func (g *MyGraph) Edges(v int) ([]int, bool) {
-	edges, ok := g.edges[v]
-	return edges, ok
+func (g *MyGraph) Edges(v int) []int {
+	return g.edges[v]
 }
 
 func (g *MyGraph) V() int {
 	return g.noOfVertices
+}
+
+func (g *MyGraph) E() int {
+	return g.noOfEdges
 }
 
 func (g *MyGraph) String() string {
@@ -52,11 +55,8 @@ func (g *MyGraph) String() string {
 
 	for v := range g.vertices {
 		s.WriteString(fmt.Sprintf("%v: ", v))
-		edges, ok := g.Edges(v)
-		if ok {
-			for _, e := range edges {
-				s.WriteString(fmt.Sprintf("%v ", e))
-			}
+		for _, e := range g.Edges(v) {
+			s.WriteString(fmt.Sprintf("%v ", e))
 		}
 		s.WriteString("\n")
 	}

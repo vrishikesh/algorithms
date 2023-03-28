@@ -3,28 +3,12 @@ package main
 import (
 	"fmt"
 
+	"graph_processing/directed"
+	"graph_processing/paths"
 	"graph_processing/undirected"
 )
 
 func main() {
-	// g1 := NewAdjGraph(5)
-	// g1.AddEdge(0, 1)
-	// g1.AddEdge(0, 2)
-	// g1.AddEdge(0, 3)
-	// g1.AddEdge(1, 4)
-	// g1.AddEdge(2, 4)
-	// g1.AddEdge(3, 4)
-	// fmt.Println(g1)
-
-	// g2 := NewSparseGraph(5)
-	// g2.AddEdge(0, 1)
-	// g2.AddEdge(0, 2)
-	// g2.AddEdge(0, 3)
-	// g2.AddEdge(1, 4)
-	// g2.AddEdge(2, 4)
-	// g2.AddEdge(3, 4)
-	// fmt.Println(g2)
-
 	g3 := undirected.NewMyGraph()
 	g3.AddEdge(0, 1)
 	g3.AddEdge(0, 2)
@@ -34,11 +18,24 @@ func main() {
 	g3.AddEdge(3, 4)
 	fmt.Println(g3)
 
-	dfp := undirected.NewDepthFirstPaths(g3, 0)
+	dfp := paths.NewDepthFirstPaths(g3, 0)
 	fmt.Println(dfp)
 	fmt.Println(dfp.PathTo(4))
 
-	bfp := undirected.NewBreadthFirstPaths(g3, 0)
-	fmt.Println(bfp)
+	// bfp := undirected.NewBreadthFirstPaths(g3, 0)
+	// fmt.Println(bfp)
 	// fmt.Println(bfp.PathTo(4))
+
+	g4 := directed.NewDigraph(5)
+	g4.AddEdge(0, 1)
+	g4.AddEdge(0, 2)
+	g4.AddEdge(0, 3)
+	g4.AddEdge(1, 4)
+	g4.AddEdge(2, 4)
+	g4.AddEdge(3, 4)
+	fmt.Println(g4)
+
+	dfp = paths.NewDepthFirstPaths(g4, 0)
+	fmt.Println(dfp)
+	fmt.Println(dfp.PathTo(4))
 }

@@ -1,7 +1,8 @@
-package undirected
+package paths
 
 import (
 	"fmt"
+	"graph_processing/types"
 	"stacks_queues/generic_queue"
 	"strings"
 )
@@ -12,7 +13,7 @@ type BreadthFirstPaths struct {
 	s      int
 }
 
-func NewBreadthFirstPaths(g *MyGraph, s int) *BreadthFirstPaths {
+func NewBreadthFirstPaths(g types.Graph, s int) *BreadthFirstPaths {
 	b := &BreadthFirstPaths{
 		edgeTo: make([]int, g.V()),
 		distTo: make([]int, g.V()),
@@ -28,21 +29,18 @@ func NewBreadthFirstPaths(g *MyGraph, s int) *BreadthFirstPaths {
 	return b
 }
 
-func (b *BreadthFirstPaths) bfs(g *MyGraph, s int) {
+func (b *BreadthFirstPaths) bfs(g types.Graph, s int) {
 	q := generic_queue.NewLinkedQueue[int]()
 	b.distTo[s] = 0
 	q.Enqueue(s)
 
 	for !q.IsEmpty() {
 		v := q.Dequeue()
-		edges, ok := g.Edges(v)
-		if ok {
-			for _, w := range edges {
-				if b.distTo[w] == -1 {
-					b.edgeTo[w] = v
-					b.distTo[w] = b.distTo[v] + 1
-					q.Enqueue(w)
-				}
+		for _, w := range g.Edges(v) {
+			if b.distTo[w] == -1 {
+				b.edgeTo[w] = v
+				b.distTo[w] = b.distTo[v] + 1
+				q.Enqueue(w)
 			}
 		}
 	}

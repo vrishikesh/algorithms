@@ -1,4 +1,6 @@
-package undirected
+package paths
+
+import "graph_processing/types"
 
 type ConnectedComponents struct {
 	marked []bool
@@ -6,7 +8,7 @@ type ConnectedComponents struct {
 	count  int
 }
 
-func NewConnectedComponents(g *MyGraph) *ConnectedComponents {
+func NewConnectedComponents(g types.Graph) *ConnectedComponents {
 	cc := &ConnectedComponents{
 		marked: make([]bool, g.V()),
 		id:     make([]int, g.V()),
@@ -20,15 +22,12 @@ func NewConnectedComponents(g *MyGraph) *ConnectedComponents {
 	return cc
 }
 
-func (cc *ConnectedComponents) dfs(g *MyGraph, v int) {
+func (cc *ConnectedComponents) dfs(g types.Graph, v int) {
 	cc.marked[v] = true
 	cc.id[v] = cc.count
-	edges, ok := g.Edges(v)
-	if ok {
-		for _, e := range edges {
-			if !cc.marked[e] {
-				cc.dfs(g, e)
-			}
+	for _, e := range g.Edges(v) {
+		if !cc.marked[e] {
+			cc.dfs(g, e)
 		}
 	}
 }

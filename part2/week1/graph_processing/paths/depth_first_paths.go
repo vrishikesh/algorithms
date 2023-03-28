@@ -1,8 +1,10 @@
-package undirected
+package paths
 
 import (
 	"fmt"
 	"strings"
+
+	"graph_processing/types"
 )
 
 type DepthFirstPaths struct {
@@ -11,7 +13,7 @@ type DepthFirstPaths struct {
 	s      int
 }
 
-func NewDepthFirstPaths(g *MyGraph, s int) *DepthFirstPaths {
+func NewDepthFirstPaths(g types.Graph, s int) *DepthFirstPaths {
 	dfp := &DepthFirstPaths{
 		marked: make([]bool, g.V()),
 		edgeTo: make([]int, g.V()),
@@ -21,15 +23,12 @@ func NewDepthFirstPaths(g *MyGraph, s int) *DepthFirstPaths {
 	return dfp
 }
 
-func (dfp *DepthFirstPaths) dfs(g *MyGraph, v int) {
+func (dfp *DepthFirstPaths) dfs(g types.Graph, v int) {
 	dfp.marked[v] = true
-	edges, ok := g.Edges(v)
-	if ok {
-		for _, e := range edges {
-			if !dfp.marked[e] {
-				dfp.edgeTo[e] = v
-				dfp.dfs(g, e)
-			}
+	for _, e := range g.Edges(v) {
+		if !dfp.marked[e] {
+			dfp.edgeTo[e] = v
+			dfp.dfs(g, e)
 		}
 	}
 }
