@@ -1,4 +1,4 @@
-package graph_processing
+package undirected
 
 type ConnectedComponents struct {
 	marked []bool

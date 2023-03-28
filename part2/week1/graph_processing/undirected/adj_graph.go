@@ -1,4 +1,4 @@
-package graph_processing
+package undirected
 
 import (
 	"fmt"
