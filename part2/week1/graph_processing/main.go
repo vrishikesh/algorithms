@@ -5,6 +5,7 @@ import (
 
 	"graph_processing/directed"
 	"graph_processing/paths"
+	"graph_processing/sort"
 	"graph_processing/undirected"
 )
 
@@ -38,4 +39,7 @@ func main() {
 	dfp = paths.NewDepthFirstPaths(g4, 0)
 	fmt.Println(dfp)
 	fmt.Println(dfp.PathTo(4))
+
+	ts := sort.NewTopologicalSort(g4)
+	fmt.Println(ts)
 }
